@@ -1,0 +1,30 @@
+﻿@model UserIdentity.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Giriş-Yap</h2>
+@Html.ValidationSummary() 
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
+    <div class="form-group">
+        <label>Kullanıcı isminiz</label>
+        @Html.TextBoxFor(i => i.Username, new { @class="form-control"})
+    </div>
+    <div class="form-group">
+        <label> Şifreniz </label>
+        @Html.PasswordFor(i => i.Password , new { @class="form-control"})
+    </div>
+    <div class="form-grop">
+        <label> Beni Hatırla </label>
+        @Html.CheckBox("rememberMe", new { @checked = "checked" });
+    </div>
+
+    <button type="submit" class="btn btn-success">Login </button>
+}
+
+
+
